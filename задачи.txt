@@ -1,0 +1,202 @@
+Option Explicit
+
+Sub k1()
+    Dim n As Integer, i As Integer
+    Dim sum As Double
+    n = InputBox("Введите n")
+    sum = 0
+    i = 1
+    Do While i <= n
+        sum = sum + 1 / (i ^ i)
+        i = i + 1
+    Loop
+    MsgBox "Сумма ряда = " & sum
+End Sub
+Sub k2()
+    Dim n As Integer, i As Integer
+    Dim f As Double
+    n = InputBox("Введите n")
+    f = 1
+    i = 1
+    Do While i <= n
+        f = f * i
+        i = i + 1
+    Loop
+    MsgBox "Факториал = " & f
+End Sub
+Sub k3()
+    Dim n As Integer, i As Integer
+    Dim tSum As Double, chSum As Double
+    Dim ran As Integer
+    n = InputBox("Введите n")
+    tSum = 0
+    chSum = 0
+    i = 1
+    Do While i <= n
+        ran = Int((99 - 10 + 1) * Rnd + 10)
+        If ran Mod 3 = 0 Then
+            tSum = tSum + ran
+        ElseIf ran Mod 4 = 0 Then
+            chSum = chSum + ran
+        End If
+        i = i + 1
+    Loop
+    If tSum > chSum Then
+        MsgBox "Среднее арифметическое = " & (tSum + chSum) / 2
+    Else
+        MsgBox "Среднее геометрическое = " & (tSum * chSum) ^ (1 / 2)
+    End If
+End Sub
+Sub k4()
+    Dim n As Integer, i As Integer
+    Dim max As Integer, min As Integer
+    Dim ran As Integer
+    Dim result As String
+    n = Int((20 - 10 + 1) * Rnd + 10)
+    max = 10
+    min = 99
+    i = 1
+    Do While i <= n
+        ran = Int((99 - 10 + 1) * Rnd + 10)
+        result = result & ran & " "
+        If ran > max Then max = ran
+        If ran < min Then min = ran
+        i = i + 1
+        
+    Loop
+    MsgBox "Максимум = " & max & ", Минимум = " & min & ", Рандом = " & result
+End Sub
+
+Sub k5()
+    Dim n As Integer, i As Integer
+    Dim sum As Double, a As Double
+    Dim ran As Integer, d As Double, max As Double
+    
+    n = Int((20 - 10 + 1) * Rnd + 10)
+    sum = 0
+    i = 1
+
+    Do While i <= n
+        ran = Int((99 - 10 + 1) * Rnd + 10)
+        sum = sum + ran
+        i = i + 1
+    Loop
+
+    a = sum / n
+
+    max = 0
+    i = 1
+    Do While i <= n
+        ran = Int((99 - 10 + 1) * Rnd + 10)
+        d = Abs(ran - a)
+        If d > max Then max = d
+        i = i + 1
+    Loop
+MsgBox " Среднее = " & a & ", Наибольшее отклонение = " & max
+End Sub
+Sub k6()
+    Dim n As Integer, i As Integer
+    Dim e As Integer, o As Integer
+    Dim sum As Double, a As Double
+    Dim ran As Integer
+
+    Randomize
+    n = Int((20 - 10 + 1) * Rnd + 10)
+
+    sum = 0
+    e = 0
+    o = 0
+    i = 1
+
+    Do While i <= n
+        ran = Int((99 - 10 + 1) * Rnd + 10)
+        sum = sum + ran
+        If ran Mod 2 = 0 Then
+            e = e + 1
+        Else
+            o = o + 1
+        End If
+        i = i + 1
+    Loop
+
+    a = sum / n
+
+    If e > o Then
+        a = a * 5
+    Else
+        a = a ^ (1 / 5)
+    End If
+MsgBox "Результат = " & a
+End Sub
+
+
+
+
+
+
+
+
+Sub MultiplicationTable()
+    Dim i As Integer, j As Integer
+    Dim r As String
+
+    For i = 1 To 10
+        For j = 1 To 10
+            r = r & i & " x " & j & " = " & (i * j) & vbCrLf
+        Next j
+    Next i
+
+    MsgBox "Таблица умножения:" & r
+End Sub
+Sub MatrixZeroCount()
+    Dim n As Integer, m As Integer
+    Dim i As Integer, j As Integer
+    Dim x As Integer
+    Dim z As Integer
+    Dim r As String
+
+    n = InputBox("Введите количество строк в матрице:")
+    m = InputBox("Введите количество столбцов в матрице:")
+
+    z = 0
+    r = ""
+
+    For i = 1 To n
+        For j = 1 To m
+            x = Int(10 * Rnd - 5)
+            If x = 0 Then z = z + 1
+            r = r & x & " "
+        Next j
+        r = r & vbCrLf
+    Next i
+
+    MsgBox "Матрица: " & vbCrLf & r & vbCrLf & "Количество нулей: " & z
+End Sub
+Sub MatrixMinMaxExample()
+    Dim x As Integer, i As Integer, j As Integer
+    Dim n As Integer, m As Integer
+    Dim max As Integer, min As Integer
+    Dim r As String
+
+    n = InputBox("Введите количество строк в матрице:")
+    m = InputBox("Введите количество столбцов в матрице:")
+
+    max = -999
+    min = 999
+    r = ""
+
+    For i = 1 To n
+        For j = 1 To m
+            x = Int(100 * Rnd)
+            If x > max Then max = x
+            If x < min Then min = x
+            r = r & x & " "
+        Next j
+        r = r & vbCrLf
+    Next i
+
+    MsgBox "Матрица: " & vbCrLf & r & vbCrLf & "Максимум: " & max & vbCrLf & "Минимум: " & min
+End Sub
+
+
+
